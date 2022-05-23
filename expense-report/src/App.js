@@ -1,4 +1,4 @@
-import Expenses from "./components/expenses/Expenses";
+import Expenses from "./components/ExpenseMain/Expenses";
 function App() {
   const expenses = [
     { id: "e1", title: "Rent", amount: 100, date: new Date(2020, 2, 28) },
