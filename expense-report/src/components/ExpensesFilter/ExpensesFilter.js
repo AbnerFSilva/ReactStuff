@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./ExpensesFilter.css";
 function ExpenseFilter(props) {
-  const [, setFilterOption] = useState("");
+  const [, setFilterOption] = useState("2020");
 
   const filterChangeHandler = (event) => {
     event.preventDefault();

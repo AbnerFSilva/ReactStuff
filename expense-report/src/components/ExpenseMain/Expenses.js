@@ -1,25 +1,35 @@
+import React, { useState } from "react";
 import ExpenseItem from "../Expenses/Item/ExpenseItem";
 import ExpensesFilter from "../ExpensesFilter/ExpensesFilter";
 import "./Expense.css";
 function Expenses(props) {
+  const [filterOption, setFilterOption] = useState("2020");
+
   const filterExpensesHandler = (filterOption) => {
-    console.log("filter in expense js", filterOption);
+    setFilterOption(filterOption);
   };
+
+  const filteredExpenses = props.expenseSummary.filter((expense) => {
+    return expense.date.getFullYear().toString() === filterOption;
+  });
   return (
     <div>
-      <div>
-        <ExpensesFilter onFilterChange={filterExpensesHandler} />
-      </div>
       <div className="expenses">
-        {props.expenseSummary.map((expense) => {
-          return (
-            <ExpenseItem
-              title={expense.title}
-              amount={expense.amount}
-              date={expense.date}
-            />
-          );
-        })}
+        <ExpensesFilter onFilterChange={filterExpensesHandler} />
+        {filteredExpenses.length === 0 ? (
+          <p>No Records found.</p>
+        ) : (
+          filteredExpenses.map((expense) => {
+            return (
+              <ExpenseItem
+                key={expense.id}
+                title={expense.title}
+                amount={expense.amount}
+                date={expense.date}
+              />
+            );
+          })
+        )}
       </div>
     </div>
   );
