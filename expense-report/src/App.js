@@ -1,5 +1,6 @@
 import Expenses from "./components/ExpenseMain/Expenses";
 import NewExpense from "./components/NewExpense/NewExpense";
+import ExpensesFilter from "./components/ExpensesFilter/ExpensesFilter";
 function App() {
   const expenses = [
     { id: "e1", title: "Rent", amount: 100, date: new Date(2020, 2, 28) },
@@ -17,12 +18,18 @@ function App() {
       date: new Date(2021, 2, 1),
     },
   ];
+  let filter = "";
   const addExpenseHandler = (expense) => {
     console.log("expense in app js", expense);
+  };
+  const filterExpensesHandler = (filterOption) => {
+    console.log("filter in app js", filterOption);
+    filter = filterOption;
   };
   return (
     <div>
       <NewExpense onAddExpense={addExpenseHandler} />
+      <ExpensesFilter onFilterChange={filterExpensesHandler} />
       <Expenses expenseSummary={expenses} />
     </div>
   );
