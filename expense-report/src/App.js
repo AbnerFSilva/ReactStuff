@@ -18,18 +18,13 @@ function App() {
       date: new Date(2021, 2, 1),
     },
   ];
-  let filter = "";
   const addExpenseHandler = (expense) => {
     console.log("expense in app js", expense);
   };
-  const filterExpensesHandler = (filterOption) => {
-    console.log("filter in app js", filterOption);
-    filter = filterOption;
-  };
+
   return (
     <div>
       <NewExpense onAddExpense={addExpenseHandler} />
-      <ExpensesFilter onFilterChange={filterExpensesHandler} />
       <Expenses expenseSummary={expenses} />
     </div>
   );
