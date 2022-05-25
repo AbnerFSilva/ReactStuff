@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ExpenseItem from "../Expenses/Item/ExpenseItem";
+import ExpenseList from "../ExpenseList/ExpenseList";
 import ExpensesFilter from "../ExpensesFilter/ExpensesFilter";
 import "./Expense.css";
 function Expenses(props) {
@@ -16,20 +16,7 @@ function Expenses(props) {
     <div>
       <div className="expenses">
         <ExpensesFilter onFilterChange={filterExpensesHandler} />
-        {filteredExpenses.length === 0 ? (
-          <p>No Records found.</p>
-        ) : (
-          filteredExpenses.map((expense) => {
-            return (
-              <ExpenseItem
-                key={expense.id}
-                title={expense.title}
-                amount={expense.amount}
-                date={expense.date}
-              />
-            );
-          })
-        )}
+        <ExpenseList expenses={filteredExpenses} />
       </div>
     </div>
   );
