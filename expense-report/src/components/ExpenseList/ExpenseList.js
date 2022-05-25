@@ -5,7 +5,7 @@ function ExpenseList(props) {
     return <h2 className="expenses-list__fallback">Found no expenses.</h2>;
   }
   return (
-    <ul className="expense-list">
+    <div className="expense-list">
       {props.expenses.map((expense) => (
         <ExpenseItem
           key={expense.id}
@@ -14,8 +14,7 @@ function ExpenseList(props) {
           date={expense.date}
         />
       ))}
-      ;
-    </ul>
+    </div>
   );
 }
 
